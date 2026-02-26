@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruits vs Brainrot - Brainrot Index</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f0f1a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.rebirth-box {
+    background: #1c1c2e;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rebirth-btn {
+    background: #ff4c4c;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #1c1c2e;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.card.locked {
+    opacity: 0.4;
+}
+
+.card h3 {
+    margin: 0 0 10px;
+}
+
+.collect-btn {
+    background: #4caf50;
+    color: white;
+}
+
+.progress {
+    margin-top: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>🧠 Fruits vs Brainrot – Index Library</h1>
+
+<div class="rebirth-box">
+    <p>Rebirth Level: <span id="rebirthLevel">0</span></p>
+    <button class="rebirth-btn" onclick="rebirth()">Rebirth +1</button>
+    <button onclick="resetAll()">Reset All</button>
+</div>
+
+<div class="grid" id="brainrotGrid"></div>
+
+<div class="progress" id="progressText"></div>
+
+</div>
+
+<script>
+
+const brainrots = [
+    {id:1, name:"Starter Rot", rarity:"Common", rebirth:0},
+    {id:2, name:"Hyper Rot", rarity:"Rare", rebirth:0},
+    {id:3, name:"Golden Rot", rarity:"Epic", rebirth:1},
+    {id:4, name:"Mythic Brain", rarity:"Mythic", rebirth:3},
+    {id:5, name:"Void Rot", rarity:"Legendary", rebirth:5}
+];
+
+let rebirthLevel = localStorage.getItem("rebirthLevel") 
+    ? parseInt(localStorage.getItem("rebirthLevel")) 
+    : 0;
+
+let collected = JSON.parse(localStorage.getItem("collected")) || [];
+
+document.getElementById("rebirthLevel").innerText = rebirthLevel;
+
+function saveData() {
+    localStorage.setItem("rebirthLevel", rebirthLevel);
+    localStorage.setItem("collected", JSON.stringify(collected));
+}
+
+function rebirth() {
+    rebirthLevel++;
+    document.getElementById("rebirthLevel").innerText = rebirthLevel;
+    saveData();
+    render();
+}
+
+function collect(id) {
+    if (!collected.includes(id)) {
+        collected.push(id);
+        saveData();
+        render();
+    }
+}
+
+function resetAll() {
+    localStorage.clear();
+    location.reload();
+}
+
+function render() {
+    const grid = document.getElementById("brainrotGrid");
+    grid.innerHTML = "";
+
+    brainrots.forEach(item => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        if (rebirthLevel < item.rebirth) {
+            card.classList.add("locked");
+        }
+
+        card.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>Rarity: ${item.rarity}</p>
+            <p>Requires Rebirth: ${item.rebirth}</p>
+            ${
+                rebirthLevel >= item.rebirth
+                ? collected.includes(item.id)
+                    ? "<p>✅ Collected</p>"
+                    : `<button class="collect-btn" onclick="collect(${item.id})">Collect</button>`
+                : "<p>🔒 Locked</p>"
+            }
+        `;
+
+        grid.appendChild(card);
+    });
+
+    updateProgress();
+}
+
+function updateProgress() {
+    const progress = document.getElementById("progressText");
+    progress.innerText = `Collected ${collected.length} / ${brainrots.length}`;
+}
+
+render();
+
+</script>
+
+</body>
+</html>
