@@ -1,180 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fruits vs Brainrot - Brainrot Index</title>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #0f0f1a;
-    color: white;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-}
-
-.container {
-    max-width: 1000px;
-    margin: auto;
-}
-
-.rebirth-box {
-    background: #1c1c2e;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.rebirth-btn {
-    background: #ff4c4c;
-    color: white;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    background: #1c1c2e;
-    padding: 15px;
-    border-radius: 10px;
-    transition: 0.2s;
-}
-
-.card.locked {
-    opacity: 0.4;
-}
-
-.card h3 {
-    margin: 0 0 10px;
-}
-
-.collect-btn {
-    background: #4caf50;
-    color: white;
-}
-
-.progress {
-    margin-top: 20px;
-    font-weight: bold;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits vs Brainrots - Codes | Rebirth | Collection (Feb 2026)</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(to bottom, #f0f8ff, #90ee90); 
+            color: #333; 
+        }
+        h1 { color: #228b22; text-align: center; }
+        .tabs { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { 
+            background: #90ee90; 
+            border: none; 
+            padding: 15px 30px; 
+            margin: 5px; 
+            cursor: pointer; 
+            border-radius: 10px 10px 0 0; 
+            font-weight: bold; 
+            transition: background 0.3s; 
+        }
+        .tab-btn.active { background: #228b22; color: white; }
+        .tab-btn:hover { background: #228b22; color: white; }
+        .tab-content { 
+            display: none; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 0 10px 10px 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            margin-bottom: 20px; 
+        }
+        .tab-content.active { display: block; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #90ee90; font-weight: bold; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        input[type="text"] { 
+            margin-bottom: 10px; 
+            padding: 12px; 
+            width: 100%; 
+            box-sizing: border-box; 
+            border: 2px solid #90ee90; 
+            border-radius: 5px; 
+            font-size: 16px; 
+        }
+        input[type="checkbox"] { transform: scale(1.5); margin-right: 10px; }
+        a { color: #1e90ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .links, .howto { text-align: center; margin: 20px 0; }
+        .howto { background: #e6ffe6; padding: 15px; border-radius: 10px; }
+        .progress { background: #e6ffe6; padding: 10px; border-radius: 5px; margin: 10px 0; font-weight: bold; }
+    </style>
 </head>
-
 <body>
+    <h1>🍎 Fruits vs Brainrots – Codes | Rebirth | Collection 🍌</h1>
+    <p style="text-align: center;">Fortnite Creative Map: <a href="https://www.fortnite.com/@pandvil/4554-4413-1515" target="_blank">4554-4413-1515</a><br>
+    Official: <a href="https://x.com/FruitsVBrainrot" target="_blank">X</a> | <a href="https://discord.gg/fruitsfn" target="_blank">Discord</a></p>
 
-<div class="container">
-<h1>🧠 Fruits vs Brainrot – Index Library</h1>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('codes')">💎 Codes</button>
+        <button class="tab-btn" onclick="showTab('rebirth')">🔄 Rebirth</button>
+        <button class="tab-btn" onclick="showTab('collection')">📋 Collection</button>
+    </div>
 
-<div class="rebirth-box">
-    <p>Rebirth Level: <span id="rebirthLevel">0</span></p>
-    <button class="rebirth-btn" onclick="rebirth()">Rebirth +1</button>
-    <button onclick="resetAll()">Reset All</button>
-</div>
+    <!-- CODES TAB -->
+    <div id="codes" class="tab-content active">
+        <div class="howto">
+            <h3>How to Redeem Codes:</h3>
+            <ol>
+                <li>Join the map: 4554-4413-1515</li>
+                <li>Go to your plot and find the yellow "Codes" podium/terminal (usually near the starting area)</li>
+                <li>Interact and enter the 6-digit code</li>
+                <li>Press the tick/confirm – reward spawns or applies instantly!</li>
+            </ol>
+            <p>Codes can expire with updates—always verify in-game or on Discord/X.</p>
+        </div>
 
-<div class="grid" id="brainrotGrid"></div>
+        <h2>🔥 Brainrots & Bosses (Secret Spawns)</h2>
+        <input type="text" id="brainrotSearch" onkeyup="searchTable('brainrotTable', 'brainrotSearch')" placeholder="Search brainrots, codes, or rarity...">
+        <table id="brainrotTable">
+            <thead>
+                <tr><th>Name</th><th>Code(s)</th><th>Rarity</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Forbidden Tabaschini Chilino Brainrot</td><td>471092, 2026</td><td>Forbidden</td><td>Top-tier rare; high cash value</td></tr>
+                <tr><td>Forbidden Don Tictacco</td><td>154829</td><td>Forbidden</td><td>Forbidden rarity collectible</td></tr>
+                <tr><td>Forbidden 67 Brainrot</td><td>804536</td><td>Forbidden</td><td>67-themed forbidden brainrot</td></tr>
+                <tr><td>Forbidden Los 67 Brainrot</td><td>518273</td><td>Forbidden</td><td>Variant of 67 brainrot</td></tr>
+                <tr><td>Divine Poppi Sodini Brainrot</td><td>981346</td><td>Divine</td><td>High-value divine spawn</td></tr>
+                <tr><td>Divine Trenostruzzo Brainrot</td><td>092376</td><td>Divine</td><td>Elephant-like divine</td></tr>
+                <tr><td>Divine Los Llaverotti Brainrot</td><td>657203</td><td>Divine</td><td>Key-themed divine</td></tr>
+                <tr><td>Divine Strawberry Elephant Brainrot</td><td>980542, 526240</td><td>Divine</td><td>Cute strawberry elephant; rare</td></tr>
+                <tr><td>Caimano Fiestarotti Brainrot</td><td>527694</td><td>Divine</td><td>Party crocodile variant</td></tr>
+                <tr><td>Trashlione Brainrot</td><td>412867</td><td>Divine</td><td>Trash lion divine</td></tr>
+                <tr><td>DraghettoTurbo 3000 Brainrot</td><td>704512</td><td>Divine</td><td>Turbo dragon divine</td></tr>
+                <tr><td>Divine Brainrot (Generic)</td><td>658209, 992741, 627380</td><td>Divine</td><td>Standard divine brainrot</td></tr>
+                <tr><td>Ghost 67 Brainrot</td><td>829146</td><td>Secret</td><td>Spooky ghost 67 variant</td></tr>
+                <tr><td>Chicleteira Bicicleteira / Bicileteria</td><td>541829, 228612</td><td>Secret</td><td>Bike/gum-themed</td></tr>
+                <tr><td>Bloodmoon 67 Brainrot</td><td>503782</td><td>Secret</td><td>Eclipse/bloodmoon 67</td></tr>
+                <tr><td>67 Brainrot (Secret)</td><td>001228, 641925</td><td>Secret</td><td>Basic secret 67 spawn</td></tr>
+                <tr><td>Graipuss Medussi Brainrot</td><td>914568</td><td>Secret</td><td>Jellyfish grape variant</td></tr>
+                <tr><td>Secret Brainrot (Generic)</td><td>758091, 924573, 381926, 440992, 137682</td><td>Secret</td><td>Various secret spawns</td></tr>
+                <tr><td>Godly Brainrot (Generic)</td><td>094738, 826451, 728317</td><td>Godly</td><td>Ultra-rare godly tier</td></tr>
+                <tr><td>Super Hero Trashlione Brainrot</td><td>692045</td><td>Godly?</td><td>Superhero trash lion</td></tr>
+                <tr><td>Boss Brainrot</td><td>419765</td><td>Boss</td><td>Massive boss for big rewards/progress</td></tr>
+            </tbody>
+        </table>
 
-<div class="progress" id="progressText"></div>
+        <h2>🍉 Fruits / Seeds (Secret Spawns)</h2>
+        <input type="text" id="fruitSearch" onkeyup="searchTable('fruitTable', 'fruitSearch')" placeholder="Search fruits or codes...">
+        <table id="fruitTable">
+            <thead>
+                <tr><th>Name</th><th>Code</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Mariachi Cactus</td><td>712625</td><td>Event cactus seed</td></tr>
+                <tr><td>Grand Avocadalf</td><td>801276</td><td>Powerful avocado</td></tr>
+                <tr><td>Santa Pear</td><td>450192</td><td>Holiday-themed pear</td></tr>
+                <tr><td>Ice Cream Asparagus</td><td>293270</td><td>Sweet asparagus variant</td></tr>
+                <tr><td>Thor Potato</td><td>491836</td><td>Godly potato seed</td></tr>
+                <tr><td>Alien Cucumber</td><td>738492</td><td>Space-themed cucumber</td></tr>
+                <tr><td>Bamboo Ronin</td><td>524173</td><td>Samurai bamboo</td></tr>
+                <tr><td>King Carrot</td><td>547263</td><td>Royal carrot seed</td></tr>
+                <tr><td>Fruitzilla</td><td>705432</td><td>Monster fruit seed</td></tr>
+                <tr><td>Peace Guy</td><td>274610</td><td>Chill/peaceful fruit seed</td></tr>
+                <tr><td>Banana Bandit</td><td>926413</td><td>Thief banana seed</td></tr>
+                <tr><td>Cannon Eggplant</td><td>567590</td><td>Explosive eggplant seed</td></tr>
+            </tbody>
+        </table>
 
-</div>
+        <h2>Bonus / Utility Codes</h2>
+        <ul>
+            <li><strong>441912</strong> → $100M Cash</li>
+            <li><strong>576320</strong> → $25M Cash</li>
+            <li><strong>790021</strong> → $100k Cash</li>
+            <li><strong>385621 / 742931</strong> → Luck Boosts</li>
+            <li><strong>565720</strong> → Rainbow Watering Can</li>
+            <li><strong>310298</strong> → Divine Crate / Rewards</li>
+        </ul>
+    </div>
 
-<script>
+    <!-- REBIRTH TAB -->
+    <div id="rebirth" class="tab-content">
+        <div class="howto">
+            <h3>Rebirth Guide:</h3>
+            <p>Rebirth resets your cash/garden but gives permanent multipliers, unlocks, and special brainrots/fruits. Higher levels require massive cash (from selling brainrots/offline income). Use high-rarity brainrots for best rebirth power. Data from community guide (Jan 12, 2026) – verify in-game as updates may adjust values.</p>
+        </div>
 
-const brainrots = [
-    {id:1, name:"Starter Rot", rarity:"Common", rebirth:0},
-    {id:2, name:"Hyper Rot", rarity:"Rare", rebirth:0},
-    {id:3, name:"Golden Rot", rarity:"Epic", rebirth:1},
-    {id:4, name:"Mythic Brain", rarity:"Mythic", rebirth:3},
-    {id:5, name:"Void Rot", rarity:"Legendary", rebirth:5}
-];
+        <input type="text" id="rebirthSearch" onkeyup="searchTable('rebirthTable', 'rebirthSearch')" placeholder="Search rebirth level or cost...">
+        <table id="rebirthTable">
+            <thead>
+                <tr><th>Rebirth</th><th>Required Cash</th><th>Unlocks / Rewards</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>REBIRTH 1</td><td>$1M</td><td>x2 Multiplier; Special unlock (e.g., basic rare seed/brainrot)</td></tr>
+                <tr><td>REBIRTH 2</td><td>$2.5M</td><td>x2 Multiplier; Special unlock (e.g., rare brainrot/seed)</td></tr>
+                <tr><td>REBIRTH 3</td><td>$5M</td><td>x2 Multiplier; Special unlock (e.g., themed brainrot)</td></tr>
+                <tr><td>REBIRTH 4</td><td>$10M</td><td>UNLOCK (new rarity/seed variant)</td></tr>
+                <tr><td>REBIRTH 5</td><td>$30M</td><td>x2 Multiplier; Lemon seed unlock</td></tr>
+                <tr><td>REBIRTH 6</td><td>$75M</td><td>x2 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 7</td><td>$250M</td><td>x2 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 8</td><td>$500M</td><td>Coco seed unlock</td></tr>
+                <tr><td>REBIRTH 9</td><td>$1B</td><td>x2 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 10</td><td>$3B</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 11</td><td>$10B</td><td>x2 Multiplier; Dragon/ special unlock</td></tr>
+                <tr><td>REBIRTH 12</td><td>$30B</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 13</td><td>$65B</td><td>Banana / special seed unlock</td></tr>
+                <tr><td>REBIRTH 14</td><td>$100B</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 15</td><td>$175B</td><td>x1 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 16</td><td>$275B</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 17</td><td>$450B</td><td>x2 Multiplier; Job / special unlock</td></tr>
+                <tr><td>REBIRTH 18</td><td>$700B</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 19</td><td>$950B</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 20</td><td>$1.5T</td><td>x3 Multiplier; Peace / Pamplona / special unlocks</td></tr>
+                <tr><td>REBIRTH 21</td><td>$2.2T</td><td>x2 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 22</td><td>$3.5T</td><td>x3 Multiplier; Ghost / special unlock</td></tr>
+                <tr><td>REBIRTH 23</td><td>$5T</td><td>x1 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 24</td><td>$7.5T</td><td>x2 Multiplier; Corn / unlock</td></tr>
+                <tr><td>REBIRTH 25</td><td>$12.5T</td><td>x3 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 26</td><td>$20T</td><td>x2 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 27</td><td>$30T</td><td>x1 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 28</td><td>$42.5T</td><td>Special unlock</td></tr>
+                <tr><td>REBIRTH 29</td><td>$55T</td><td>x3 Multiplier; Special unlock</td></tr>
+                <tr><td>REBIRTH 30</td><td>$70T</td><td>UNLOCK (final/high-tier special)</td></tr>
+            </tbody>
+        </table>
 
-let rebirthLevel = localStorage.getItem("rebirthLevel") 
-    ? parseInt(localStorage.getItem("rebirthLevel")) 
-    : 0;
+        <p><strong>Rarities for Rebirths (ascending power):</strong> SUPER HERO > GINGERBREAD > CHRISTMAS > CANDY > VIKING > GALAXY > SAMURAI > TAILORED > RED MOON > GHOST > RAINBOW > DIAMOND > GOLD > NORMAL</p>
+    </div>
 
-let collected = JSON.parse(localStorage.getItem("collected")) || [];
+    <!-- COLLECTION TAB -->
+    <div id="collection" class="tab-content">
+        <h2>📋 Brainrot Collection Tracker</h2>
+        <div class="progress" id="brainrotProgress">Progress: 0 / 21 collected</div>
+        <input type="text" id="collBrainrotSearch" onkeyup="searchTable('collBrainrotTable', 'collBrainrotSearch')" placeholder="Search brainrots...">
+        <table id="collBrainrotTable">
+            <thead>
+                <tr><th>Collected</th><th>Name</th><th>Rarity</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Forbidden Tabaschini Chilino Brainrot</td><td>Forbidden</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Forbidden Don Tictacco</td><td>Forbidden</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Forbidden 67 Brainrot</td><td>Forbidden</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Forbidden Los 67 Brainrot</td><td>Forbidden</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Divine Poppi Sodini Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Divine Trenostruzzo Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Divine Los Llaverotti Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Divine Strawberry Elephant Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Caimano Fiestarotti Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Trashlione Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>DraghettoTurbo 3000 Brainrot</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Divine Brainrot (Generic)</td><td>Divine</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Ghost 67 Brainrot</td><td>Secret</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Chicleteira Bicicleteira</td><td>Secret</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Bloodmoon 67 Brainrot</td><td>Secret</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>67 Brainrot (Secret)</td><td>Secret</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Graipuss Medussi Brainrot</td><td>Secret</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Secret Brainrot (Generic)</td><td>Secret</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Godly Brainrot (Generic)</td><td>Godly</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Super Hero Trashlione Brainrot</td><td>Godly?</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('brainrots', this)"></td><td>Boss Brainrot</td><td>Boss</td></tr>
+            </tbody>
+        </table>
 
-document.getElementById("rebirthLevel").innerText = rebirthLevel;
+        <h2>🍉 Fruit Collection Tracker</h2>
+        <div class="progress" id="fruitProgress">Progress: 0 / 12 collected</div>
+        <input type="text" id="collFruitSearch" onkeyup="searchTable('collFruitTable', 'collFruitSearch')" placeholder="Search fruits...">
+        <table id="collFruitTable">
+            <thead>
+                <tr><th>Collected</th><th>Name</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Mariachi Cactus</td><td>Event cactus</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Grand Avocadalf</td><td>Powerful</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Santa Pear</td><td>Holiday</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Ice Cream Asparagus</td><td>Sweet</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Thor Potato</td><td>Godly</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Alien Cucumber</td><td>Space</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Bamboo Ronin</td><td>Samurai</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>King Carrot</td><td>Royal</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Fruitzilla</td><td>Monster</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Peace Guy</td><td>Chill</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Banana Bandit</td><td>Thief</td></tr>
+                <tr><td><input type="checkbox" onchange="updateCollection('fruits', this)"></td><td>Cannon Eggplant</td><td>Explosive</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-function saveData() {
-    localStorage.setItem("rebirthLevel", rebirthLevel);
-    localStorage.setItem("collected", JSON.stringify(collected));
-}
+    <div class="links">
+        <p><strong>Updated: February 26, 2026</strong> | Codes & values may change—check official Discord/X for latest. Credits to community guides (e.g., @S.takkunnn) for rebirth data.</p>
+    </div>
 
-function rebirth() {
-    rebirthLevel++;
-    document.getElementById("rebirthLevel").innerText = rebirthLevel;
-    saveData();
-    render();
-}
-
-function collect(id) {
-    if (!collected.includes(id)) {
-        collected.push(id);
-        saveData();
-        render();
-    }
-}
-
-function resetAll() {
-    localStorage.clear();
-    location.reload();
-}
-
-function render() {
-    const grid = document.getElementById("brainrotGrid");
-    grid.innerHTML = "";
-
-    brainrots.forEach(item => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-
-        if (rebirthLevel < item.rebirth) {
-            card.classList.add("locked");
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
 
-        card.innerHTML = `
-            <h3>${item.name}</h3>
-            <p>Rarity: ${item.rarity}</p>
-            <p>Requires Rebirth: ${item.rebirth}</p>
-            ${
-                rebirthLevel >= item.rebirth
-                ? collected.includes(item.id)
-                    ? "<p>✅ Collected</p>"
-                    : `<button class="collect-btn" onclick="collect(${item.id})">Collect</button>`
-                : "<p>🔒 Locked</p>"
+        function searchTable(tableId, inputId) {
+            const input = document.getElementById(inputId).value.toLowerCase();
+            const table = document.getElementById(tableId);
+            const rows = table.getElementsByTagName('tr');
+            for (let i = 1; i < rows.length; i++) {
+                let found = false;
+                const cells = rows[i].getElementsByTagName('td');
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j] && cells[j].textContent.toLowerCase().indexOf(input) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = found ? '' : 'none';
             }
-        `;
+        }
 
-        grid.appendChild(card);
-    });
+        function updateCollection(type, checkbox) {
+            const key = type + 'Collection';
+            let collected = JSON.parse(localStorage.getItem(key)) || [];
+            const row = checkbox.closest('tr');
+            const index = Array.from(row.parentNode.children).indexOf(row) - 1; // -1 for header
+            if (checkbox.checked) {
+                if (!collected.includes(index)) collected.push(index);
+            } else {
+                collected = collected.filter(i => i !== index);
+            }
+            localStorage.setItem(key, JSON.stringify(collected));
+            updateProgress(type);
+        }
 
-    updateProgress();
-}
+        function updateProgress(type) {
+            const tableId = 'coll' + type.charAt(0).toUpperCase() + type.slice(1) + 'Table';
+            const table = document.getElementById(tableId);
+            const checkboxes = table.querySelectorAll('input[type="checkbox"]');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            document.getElementById(type + 'Progress').textContent = `Progress: ${checkedCount} / ${checkboxes.length} collected`;
+        }
 
-function updateProgress() {
-    const progress = document.getElementById("progressText");
-    progress.innerText = `Collected ${collected.length} / ${brainrots.length}`;
-}
-
-render();
-
-</script>
-
+        // Load saved collection on page load
+        window.onload = function() {
+            ['brainrots', 'fruits'].forEach(type => {
+                const key = type + 'Collection';
+                const saved = JSON.parse(localStorage.getItem(key)) || [];
+                const checkboxes = document.querySelectorAll(`#coll${type.charAt(0).toUpperCase() + type.slice(1)}Table input[type="checkbox"]`);
+                saved.forEach(index => {
+                    if (checkboxes[index]) checkboxes[index].checked = true;
+                });
+                updateProgress(type);
+            });
+        };
+    </script>
 </body>
 </html>
